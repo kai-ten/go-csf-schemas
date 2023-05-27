@@ -5,7 +5,15 @@ import (
 )
 
 func TestValidNewGroup(t *testing.T) {
-	group, err := NewGroup("test_type", "test desc", "test_name", []string{"test privs"}, "123")
+	group := &Group{
+		AccountType: "test_type",
+		Description: "test desc",
+		Name:        "test_name",
+		Privileges:  []string{"test privs"},
+		UniqueID:    "123",
+	}
+
+	group, err := ValidateGroup(group)
 	if err != nil {
 		t.Fatalf("Unable to create and validate Group: %v", err)
 	}
@@ -14,7 +22,15 @@ func TestValidNewGroup(t *testing.T) {
 }
 
 func TestErrorInvalidNewGroup(t *testing.T) {
-	_, err := NewGroup("test_type", "test desc", "", []string{"test privs"}, "123")
+	group := &Group{
+		AccountType: "test_type",
+		Description: "test desc",
+		Name:        "",
+		Privileges:  []string{"test privs"},
+		UniqueID:    "123",
+	}
+
+	_, err := ValidateGroup(group)
 	if err == nil {
 		t.Fatalf("Validator should have flagged this as an error: %v", err)
 	}
