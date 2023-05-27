@@ -7,11 +7,11 @@ import (
 )
 
 type Policy struct {
-	Description string `json:"desc"`
+	Description string `json:"desc" validate:"omitempty"`
 	Group       *Group `json:"group" validate:"omitempty"`
 	Name        string `json:"name" validate:"required"`
-	UniqueID    string `json:"uid"`
-	Version     string `json:"version"`
+	UniqueID    string `json:"uid" validate:"omitempty"`
+	Version     string `json:"version" validate:"omitempty"`
 }
 
 func ValidatePolicy(policy *Policy) (*Policy, error) {

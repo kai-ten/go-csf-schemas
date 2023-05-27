@@ -7,11 +7,11 @@ import (
 )
 
 type Group struct {
-	AccountType string   `json:"type"`
-	Description string   `json:"desc"`
+	AccountType string   `json:"type" validate:"omitempty"`
+	Description string   `json:"desc" validate:"omitempty"`
 	Name        string   `json:"name" validate:"required"`
-	Privileges  []string `json:"privileges"`
-	UniqueID    string   `json:"unique_id"`
+	Privileges  []string `json:"privileges" validate:"omitempty"`
+	UniqueID    string   `json:"unique_id" validate:"omitempty"`
 }
 
 func ValidateGroup(group *Group) (*Group, error) {
