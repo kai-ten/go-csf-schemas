@@ -35,3 +35,17 @@ func TestErrorInvalidNewGroup(t *testing.T) {
 		t.Fatalf("Validator should have flagged this as an error: %v", err)
 	}
 }
+
+func BenchmarkGroupValidation(b *testing.B) {
+	b.ReportAllocs()
+
+	group := &Group{
+		AccountType: "test_type",
+		Description: "test desc",
+		Name:        "test_name",
+		Privileges:  []string{"test privs"},
+		UniqueID:    "123",
+	}
+
+	ValidateGroup(group)
+}
