@@ -3,7 +3,6 @@ package main
 
 import (
 	"github.com/go-playground/validator/v10"
-	log "github.com/sirupsen/logrus"
 )
 
 type Group struct {
@@ -17,10 +16,7 @@ type Group struct {
 func ValidateGroup(group *Group) (*Group, error) {
 	err := validator.New().Struct(group)
 	if err != nil {
-		for _, err := range err.(validator.ValidationErrors) {
-			log.Errorf("field: %v, tag: %v, type: %v, value: %v", err.Field(), err.Tag(), err.Type(), err.Value())
-		}
-
+		ValidatorErrLog(err)
 		return nil, err
 	}
 
