@@ -1,3 +1,4 @@
+// https://schema.ocsf.io/objects/digital_signature
 package main
 
 import (
