@@ -9,7 +9,7 @@ func TestValidFileObject(t *testing.T) {
 	// contains many more optional fields
 	file := &File{
 		Name:   "name",
-		TypeID: 1,
+		TypeID: UInteger8(0),
 	}
 
 	_, err := ValidateFile(file)
@@ -24,7 +24,7 @@ func TestInvalidNameFileObject(t *testing.T) {
 	file := &File{
 		AccessedTime: &time,
 		Name:         "",
-		TypeID:       1,
+		TypeID:       UInteger8(1),
 	}
 
 	_, err := ValidateFile(file)
@@ -53,7 +53,7 @@ func BenchmarkValidFileObject(b *testing.B) {
 	// contains many more optional fields
 	file := &File{
 		Name:   "name",
-		TypeID: 1,
+		TypeID: UInteger8(2),
 	}
 
 	ValidateFile(file)

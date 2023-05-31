@@ -33,7 +33,7 @@ type File struct {
 	Size               int64                  `json:"size" validate:"omitempty"`
 	System             bool                   `json:"is_system" validate:"omitempty"`
 	Type               string                 `json:"type" validate:"omitempty"`
-	TypeID             uint8                  `json:"type_id" validate:"required"`
+	TypeID             *uint8                 `json:"type_id" validate:"required"`
 	UniqueID           string                 `json:"uid" validate:"omitempty"`
 	Version            string                 `json:"version" validate:"omitempty"`
 }

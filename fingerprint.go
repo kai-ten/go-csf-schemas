@@ -5,7 +5,7 @@ import "github.com/go-playground/validator/v10"
 
 type Fingerprint struct {
 	Algorithm   string `json:"algorithm" validate:"omitempty"`
-	AlgorithmID uint8  `json:"algorithm_id" validate:"required"`
+	AlgorithmID *uint8 `json:"algorithm_id" validate:"required"`
 	Value       string `json:"value" validate:"required"`
 }
 

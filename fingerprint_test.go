@@ -5,7 +5,7 @@ import "testing"
 func TestValidFingerprintObject(t *testing.T) {
 	fingerprint := &Fingerprint{
 		Algorithm:   "",
-		AlgorithmID: 1,
+		AlgorithmID: UInteger8(0),
 		Value:       "ABC123==",
 	}
 	fingerprint, err := ValidateFingerprint(fingerprint)
@@ -30,7 +30,7 @@ func TestInvalidAlgorithmIDFingerprintObject(t *testing.T) {
 func TestInvalidValueFingerprintObject(t *testing.T) {
 	fingerprint := &Fingerprint{
 		Algorithm:   "",
-		AlgorithmID: 1,
+		AlgorithmID: UInteger8(1),
 		Value:       "",
 	}
 	_, err := ValidateFingerprint(fingerprint)
@@ -44,7 +44,7 @@ func BenchmarkValidFingerprintObject(b *testing.B) {
 
 	fingerprint := &Fingerprint{
 		Algorithm:   "",
-		AlgorithmID: 1,
+		AlgorithmID: UInteger8(2),
 		Value:       "ABC123==",
 	}
 	ValidateFingerprint(fingerprint)
