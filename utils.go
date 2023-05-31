@@ -1,4 +1,4 @@
-package main
+package gcs
 
 func UInteger8(u uint8) *uint8 {
 	return &u

@@ -1,5 +1,5 @@
 // https://schema.ocsf.io/objects/process
-package main
+package gcs
 
 import (
 	"time"

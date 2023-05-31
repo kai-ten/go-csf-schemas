@@ -1,5 +1,5 @@
 // https://schema.ocsf.io/objects/digital_signature
-package main
+package gcs
 
 import (
 	"time"

@@ -1,5 +1,5 @@
 // https://schema.ocsf.io/classes/authentication?extensions=
-package main
+package gcs
 
 import (
 	"time"

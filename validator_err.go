@@ -1,4 +1,4 @@
-package main
+package gcs
 
 import (
 	"github.com/go-playground/validator/v10"

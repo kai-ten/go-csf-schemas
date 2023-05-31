@@ -1,5 +1,5 @@
 // https://schema.ocsf.io/objects/user
-package main
+package gcs
 
 import (
 	"github.com/go-playground/validator/v10"
