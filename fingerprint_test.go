@@ -47,5 +47,11 @@ func BenchmarkValidFingerprintObject(b *testing.B) {
 		AlgorithmID: UInteger8(2),
 		Value:       "ABC123==",
 	}
-	ValidateFingerprint(fingerprint)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateFingerprint(fingerprint)
+		if err != nil {
+			b.Fatalf("Fingerprint object is invalid: %v", err)
+		}
+	}
 }

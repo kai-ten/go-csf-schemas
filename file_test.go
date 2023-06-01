@@ -56,5 +56,10 @@ func BenchmarkValidFileObject(b *testing.B) {
 		TypeID: UInteger8(2),
 	}
 
-	ValidateFile(file)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateFile(file)
+		if err != nil {
+			b.Fatalf("File object is invalid: %v", err)
+		}
+	}
 }

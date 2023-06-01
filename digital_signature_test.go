@@ -50,5 +50,10 @@ func BenchmarkValidDigitalSignatureObject(b *testing.B) {
 		SerialNumber: "345",
 	}
 
-	ValidateDigitalSignature(dg)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateDigitalSignature(dg)
+		if err != nil {
+			b.Fatalf("DigitalSignature object is invalid: %v", err)
+		}
+	}
 }

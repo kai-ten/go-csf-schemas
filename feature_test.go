@@ -22,5 +22,11 @@ func BenchmarkValidFeatureObject(b *testing.B) {
 		FeatureName:    "name",
 		FeatureVersion: "1",
 	}
-	ValidateFeature(feature)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateFeature(feature)
+		if err != nil {
+			b.Fatalf("Feature object is invalid: %v", err)
+		}
+	}
 }

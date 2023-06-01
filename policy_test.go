@@ -74,5 +74,10 @@ func BenchmarkPolicyValidation(b *testing.B) {
 		Version:     "1",
 	}
 
-	ValidatePolicy(policy)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidatePolicy(policy)
+		if err != nil {
+			b.Fatalf("Policy object is invalid: %v", err)
+		}
+	}
 }

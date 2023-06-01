@@ -25,8 +25,14 @@ func BenchmarkValidActorObject(b *testing.B) {
 		IdentityProvider:         &IdentityProvider{},
 		InvokedBy:                "",
 		Process:                  &Process{},
-		User:                     &User{},
+		User:                     &User{EmailAddress: "test@email.com"},
 		UserSession:              &Session{},
 	}
-	ValidateActor(actor)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateActor(actor)
+		if err != nil {
+			b.Errorf("Actor object was invalid: %v", err)
+		}
+	}
 }

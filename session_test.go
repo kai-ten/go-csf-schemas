@@ -35,5 +35,11 @@ func BenchmarkValidSessionObject(b *testing.B) {
 		UniqueID:                  "234",
 		UserCredentialID:          "456",
 	}
-	ValidateSession(session)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateSession(session)
+		if err != nil {
+			b.Fatalf("Session object is invalid: %v", err)
+		}
+	}
 }

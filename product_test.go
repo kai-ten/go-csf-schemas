@@ -62,5 +62,11 @@ func BenchmarkValidProductObject(b *testing.B) {
 		ProductVersion: "1",
 		VendorName:     "Crowdstrike",
 	}
-	ValidateProduct(product)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateProduct(product)
+		if err != nil {
+			b.Fatalf("Product object is invalid: %v", err)
+		}
+	}
 }

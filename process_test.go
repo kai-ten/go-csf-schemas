@@ -55,5 +55,10 @@ func BenchmarkValidProcessObject(b *testing.B) {
 		UserSession:    nil,
 	}
 
-	ValidateProcess(process)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateProcess(process)
+		if err != nil {
+			b.Fatalf("Policy object is invalid: %v", err)
+		}
+	}
 }

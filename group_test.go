@@ -47,5 +47,10 @@ func BenchmarkGroupValidation(b *testing.B) {
 		UniqueID:    "123",
 	}
 
-	ValidateGroup(group)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateGroup(group)
+		if err != nil {
+			b.Fatalf("Group object is invalid: %v", err)
+		}
+	}
 }

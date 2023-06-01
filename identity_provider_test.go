@@ -26,5 +26,10 @@ func BenchmarkIdentityProviderValidation(b *testing.B) {
 		UniqueID: "123",
 	}
 
-	ValidateIdentityProvider(idp)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateIdentityProvider(idp)
+		if err != nil {
+			b.Fatalf("IdentityProvider object is invalid: %v", err)
+		}
+	}
 }

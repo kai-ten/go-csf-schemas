@@ -56,5 +56,10 @@ func BenchmarkAuthorizationInformationValidation(b *testing.B) {
 		},
 	}
 
-	ValidateAuthorizationInformation(authInfo)
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateAuthorizationInformation(authInfo)
+		if err != nil {
+			b.Fatalf("AuthorizationInformation object is invalid: %v", err)
+		}
+	}
 }

@@ -56,5 +56,11 @@ func BenchmarkValidUserObject(b *testing.B) {
 		UserCredentialID: "",
 		UserID:           "456",
 	}
-	ValidateUser(user)
+
+	for n := 0; n < b.N; n++ {
+		_, err := ValidateUser(user)
+		if err != nil {
+			b.Fatalf("User object is invalid: %v", err)
+		}
+	}
 }
