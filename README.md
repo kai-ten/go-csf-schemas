@@ -2,5 +2,5 @@
 
 This repository is a go package that builds the OCSF Schemas into structs.
 
-[Open Cybersecurity Schema Framework](https://github.com/ocsf)
+[Open Cybersecurity Schema Framework](https://github.com/ocsf) <br />
 [What is OCSF?](https://github.com/ocsf/ocsf-docs/tree/main/FAQs)
